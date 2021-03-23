@@ -2,19 +2,27 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-// import "./index.css";
+import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-const App = () => (
-  <div>
-    <SetTimer />
-  </div>
-);
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="flex">
+          <SetTimer />
+          <SetTimer />
+        </div>
+        <div>clock goes here</div>
+      </div>
+    );
+  }
+}
 
 const SetTimer = () => (
-  <div className="div timer-container">
+  <div className="timer-container">
     <h1>Break Time</h1>
-    <div>
+    <div className="flex actions-wrapper">
       <button>
         <FaMinus />
       </button>
