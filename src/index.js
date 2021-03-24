@@ -6,12 +6,33 @@ import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 class App extends React.Component {
+  state = {
+    breakCount: 5,
+    sessionCount: 25,
+  };
+
   render() {
+    const { breakCount, sessionCount } = this.state;
+
+    const breakProps = {
+      title: "Break Lenght",
+      count: breakCount,
+      handleDecrease: this.handleBreakDecrease,
+      handleIncrease: this.handleBreakIncrease,
+    };
+
+    const sessionProps = {
+      title: "Session Lenght",
+      count: sessionCount,
+      handleDecrease: this.handleSesionDecrease,
+      handleIncrease: this.handleSessionIncrease,
+    };
+
     return (
       <div>
         <div className="flex">
-          <SetTimer />
-          <SetTimer />
+          <SetTimer {...breakProps} />
+          <SetTimer {...sessionProps} />
         </div>
         <div>clock goes here</div>
       </div>
@@ -19,15 +40,15 @@ class App extends React.Component {
   }
 }
 
-const SetTimer = () => (
+const SetTimer = (props) => (
   <div className="timer-container">
-    <h1>Break Time</h1>
+    <h1>{props.title}</h1>
     <div className="flex actions-wrapper">
-      <button>
+      <button onClick={props.handleDecrease}>
         <FaMinus />
       </button>
-      <span>5</span>
-      <button>
+      <span>{props.count}</span>
+      <button onClick={props.handleIncrease}>
         <FaPlus />
       </button>
     </div>
