@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { FaMinus, FaPlus, FaPlay, FaSync, FaPause } from "react-icons/fa";
 
 import "./index.css";
 // import App from "./App";
@@ -34,7 +34,18 @@ class App extends React.Component {
           <SetTimer {...breakProps} />
           <SetTimer {...sessionProps} />
         </div>
-        <div>clock goes here</div>
+        <div className="clock-container">
+          <h1>Session</h1>
+          <span>25:00</span>
+          <div className="flex">
+            <button onClick={this.handlePlayPause}>
+              <FaPlay />
+            </button>
+            <button onClick={this.handleReset}>
+              <FaSync />
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -42,7 +53,7 @@ class App extends React.Component {
 
 const SetTimer = (props) => (
   <div className="timer-container">
-    <h1>{props.title}</h1>
+    <h2>{props.title}</h2>
     <div className="flex actions-wrapper">
       <button onClick={props.handleDecrease}>
         <FaMinus />
