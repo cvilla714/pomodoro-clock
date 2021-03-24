@@ -9,10 +9,21 @@ class App extends React.Component {
   state = {
     breakCount: 5,
     sessionCount: 25,
+    clockCount: 25 * 60,
+    currentTimer: "Session",
+  };
+
+  convertToTime = (count) => {
+    const minutes = Math.floor(count / 60);
+    let seconds = count % 60;
+
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    return `${minutes}:${seconds}`;
   };
 
   render() {
-    const { breakCount, sessionCount } = this.state;
+    const { breakCount, sessionCount, clockCount, currentTimer } = this.state;
 
     const breakProps = {
       title: "Break Lenght",
@@ -35,8 +46,8 @@ class App extends React.Component {
           <SetTimer {...sessionProps} />
         </div>
         <div className="clock-container">
-          <h1>Session</h1>
-          <span>25:00</span>
+          <h1>{currentTimer}</h1>
+          <span>{this.convertToTime(clockCount)}</span>
           <div className="flex">
             <button onClick={this.handlePlayPause}>
               <FaPlay />
