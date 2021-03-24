@@ -30,6 +30,7 @@ code {
 
 button {
   background-color: transparent;
+  cursor: pointer;
   color: var(--primary-white);
   font-size: 1.25rem;
   padding: 0.625rem;
