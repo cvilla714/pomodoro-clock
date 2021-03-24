@@ -57,6 +57,7 @@ button {
 .actions-wrapper span {
   font-size: 2.5rem;
   maring: 0 0.625rem;
+  width: 3.125rem;
 }
 
 .clock-container {
