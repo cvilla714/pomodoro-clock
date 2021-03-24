@@ -73,6 +73,34 @@ class App extends React.Component {
     return `${minutes}:${seconds}`;
   };
 
+  handleBreakDecrease = () => {
+    const { breakCount } = this.state;
+    this.setState({
+      breakCount: breakCount - 1,
+    });
+  };
+
+  handleBreakIncrease = () => {
+    const { breakCount } = this.state;
+    this.setState({
+      breakCount: breakCount + 1,
+    });
+  };
+
+  handleSesionDecrease = () => {
+    const { sessionCount } = this.state;
+    this.setState({
+      sessionCount: sessionCount - 1,
+    });
+  };
+
+  handleSessionIncrease = () => {
+    const { sessionCount } = this.state;
+    this.setState({
+      sessionCount: sessionCount + 1,
+    });
+  };
+
   render() {
     const { breakCount, sessionCount, clockCount, currentTimer } = this.state;
 
