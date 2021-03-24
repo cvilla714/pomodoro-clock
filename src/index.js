@@ -75,30 +75,39 @@ class App extends React.Component {
 
   handleBreakDecrease = () => {
     const { breakCount } = this.state;
-    this.setState({
-      breakCount: breakCount - 1,
-    });
+
+    if (breakCount > 1) {
+      this.setState({
+        breakCount: breakCount - 1,
+      });
+    }
   };
 
   handleBreakIncrease = () => {
     const { breakCount } = this.state;
-    this.setState({
-      breakCount: breakCount + 1,
-    });
+    if (breakCount < 60) {
+      this.setState({
+        breakCount: breakCount + 1,
+      });
+    }
   };
 
   handleSesionDecrease = () => {
     const { sessionCount } = this.state;
-    this.setState({
-      sessionCount: sessionCount - 1,
-    });
+    if (sessionCount > 1) {
+      this.setState({
+        sessionCount: sessionCount - 1,
+      });
+    }
   };
 
   handleSessionIncrease = () => {
     const { sessionCount } = this.state;
-    this.setState({
-      sessionCount: sessionCount + 1,
-    });
+    if (sessionCount < 60) {
+      this.setState({
+        sessionCount: sessionCount + 1,
+      });
+    }
   };
 
   render() {
