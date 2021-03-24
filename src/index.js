@@ -1,17 +1,44 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { FaMinus, FaPlus, FaPlay, FaSync, FaPause } from "react-icons/fa";
+import { FaMinus, FaPlus, FaPlay, FaSync, FaPause, FaThemeisle } from "react-icons/fa";
 
 import "./index.css";
 // import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.loop = undefined;
+  }
+
   state = {
     breakCount: 5,
     sessionCount: 25,
     clockCount: 25 * 60,
     currentTimer: "Session",
+    isPlaying: false,
+    loop: undefined,
   };
+
+  handlePlayPause = () => {
+    const { isPlaying } = this.state;
+
+    if (isPlaying) {
+      clearInterval(this.loop);
+      this.setState({
+        isPlaying: false,
+      });
+    } else {
+      this.setState({
+        isPlaying: true,
+      });
+      this.loop = setInterval(() => {}, 1000);
+    }
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.loop);
+  }
 
   convertToTime = (count) => {
     const minutes = Math.floor(count / 60);
