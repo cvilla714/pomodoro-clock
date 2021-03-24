@@ -32,7 +32,12 @@ class App extends React.Component {
       this.setState({
         isPlaying: true,
       });
-      this.loop = setInterval(() => {}, 1000);
+      this.loop = setInterval(() => {
+        const { clockCount } = this.state;
+        this.setState({
+          clockCount: clockCount - 1,
+        });
+      }, 1000);
     }
   };
 
@@ -76,9 +81,7 @@ class App extends React.Component {
           <h1>{currentTimer}</h1>
           <span>{this.convertToTime(clockCount)}</span>
           <div className="flex">
-            <button onClick={this.handlePlayPause}>
-              <FaPlay />
-            </button>
+            <button onClick={this.handlePlayPause}>{this.state.isPlaying ? <FaPause /> : <FaPlay />}</button>
             <button onClick={this.handleReset}>
               <FaSync />
             </button>
