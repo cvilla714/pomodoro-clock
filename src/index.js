@@ -17,7 +17,6 @@ class App extends React.Component {
     clockCount: 25 * 60,
     currentTimer: "Session",
     isPlaying: false,
-    loop: undefined,
   };
 
   handlePlayPause = () => {
@@ -48,6 +47,17 @@ class App extends React.Component {
         }
       }, 1000);
     }
+  };
+
+  handleReset = () => {
+    this.setState({
+      breakCount: 5,
+      sessionCount: 25,
+      clockCount: 25 * 60,
+      currentTimer: "Session",
+      isPlaying: false,
+    });
+    clearInterval(this.loop);
   };
 
   componentWillUnmount() {
