@@ -33,10 +33,19 @@ class App extends React.Component {
         isPlaying: true,
       });
       this.loop = setInterval(() => {
-        const { clockCount } = this.state;
-        this.setState({
-          clockCount: clockCount - 1,
-        });
+        const { clockCount, currentTimer, breakCount, sessionCount } = this.state;
+
+        if (clockCount === 0) {
+          this.setState({
+            currentTimer: currentTimer === "Session" ? "Break" : "Session",
+            // clockCount: currentTimer === "Session" ? (3) : (3),
+            clockCount: currentTimer === "Session" ? breakCount * 60 : sessionCount * 60,
+          });
+        } else {
+          this.setState({
+            clockCount: clockCount - 1,
+          });
+        }
       }, 1000);
     }
   };
