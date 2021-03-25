@@ -55,4 +55,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT]() licensed.
+This project is [MIT](https://github.com/cvilla714/pomodoro-clock/blob/master/LICENSE) licensed.
